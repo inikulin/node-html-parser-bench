@@ -30,7 +30,7 @@ new Benchmark.Suite()
         }
     })
 
-    .add('htmlparser2 (https://github.com/tautologistics/node-htmlparser/)', function () {
+    .add('htmlparser2 (https://github.com/fb55/htmlparser2)', function () {
         for (var i = 0; i < testPages.length; i++) {
             var handler = new htmlparser2.DefaultHandler(),
                 parser = new htmlparser2.Parser(handler);
