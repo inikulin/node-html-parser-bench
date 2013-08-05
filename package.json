@@ -1,0 +1,31 @@
+{
+    "name": "node-html-parser-bench",
+    "description": "Benchmark for node.js HTML5 parsers",
+    "version": "0.1.0",
+    "author": "Ivan Nikulin (ifaaan@gmail.com, https://github.com/inikulin)",
+    "keywords": [
+        "node",
+        "html",
+        "parser",
+        "benchmark"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/inikulin/node-html5-parser-benchmark.git"
+    },
+    "main": "./benchmark.js",
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://raw.github.com/inikulin/parse5/master/LICENSE"
+        }
+    ],
+    "dependencies": {
+        "benchmark": "~1.0.0",
+        "html5": ">=0.3.13",
+        "parse5": ">=0.5.4"
+    },
+    "optionalDependencies": {
+        "microtime": "~0.4.0"
+    }
+}
