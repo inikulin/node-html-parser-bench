@@ -4,7 +4,7 @@ var fs = require('fs'),
     htmlparser = require("htmlparser"),
     htmlparser2 = require('htmlparser2'),
     html5 = require('html5'),
-    parse5 = require('../lib/parser');
+    parse5 = require('parse5');
 
 var dataDirPath = path.join(__dirname, './data'),
     testPages = fs.readdirSync(dataDirPath).map(function (fileName) {
