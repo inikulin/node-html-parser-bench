@@ -30,10 +30,19 @@ new Benchmark.Suite()
         }
     })
 
-    .add('htmlparser2 (https://github.com/fb55/htmlparser2)', function () {
+    .add('htmlparser2-dom (https://github.com/fb55/htmlparser2)', function () {
         for (var i = 0; i < testPages.length; i++) {
             var handler = new htmlparser2.DefaultHandler(),
                 parser = new htmlparser2.Parser(handler);
+
+            parser.write(testPages[i]);
+            parser.end();
+        }
+    })
+    
+    .add('htmlparser2 (https://github.com/fb55/htmlparser2)', function () {
+        for (var i = 0; i < testPages.length; i++) {
+                parser = new htmlparser2.Parser({});
 
             parser.write(testPages[i]);
             parser.end();
