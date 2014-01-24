@@ -22,8 +22,10 @@
     ],
     "dependencies": {
         "benchmark": "~1.0.0",
-        "html5": ">=0.3.13",
-        "parse5": ">=0.5.4"
+        "html5": "*",
+        "parse5": "*",
+        "htmlparser2": "*",
+        "htmlparser " : "*"
     },
     "optionalDependencies": {
         "microtime": "~0.4.0"
