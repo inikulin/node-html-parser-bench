@@ -1,10 +1,14 @@
 var fs = require('fs'),
     path = require('path'),
     Benchmark = require('benchmark'),
-    htmlparser = require("htmlparser"),
+    htmlparser = require('htmlparser'),
+    htmlparserVersion = require('htmlparser/package.json').version,
     htmlparser2 = require('htmlparser2'),
+    htmlparser2Version = require('htmlparser2/package.json').version,
     html5 = require('html5'),
-    parse5 = require('parse5');
+    html5Version = require('html5/package.json').version,
+    parse5 = require('parse5'),
+    parse5Version = require('parse5/package.json').version;
 
 var dataDirPath = path.join(__dirname, './data'),
     testPages = fs.readdirSync(dataDirPath).map(function (fileName) {
@@ -14,14 +18,14 @@ var dataDirPath = path.join(__dirname, './data'),
     });
 
 new Benchmark.Suite()
-    .add('html5 (https://github.com/aredridel/html5)', function () {
+    .add('html5 v' + html5Version + ' (https://github.com/aredridel/html5)', function () {
         for (var i = 0; i < testPages.length; i++) {
             var parser = new html5.Parser();
             parser.parse(testPages[i]);
         }
     })
 
-    .add('htmlparser (https://github.com/tautologistics/node-htmlparser/)', function () {
+    .add('htmlparser v' + htmlparserVersion + ' (https://github.com/tautologistics/node-htmlparser/)', function () {
         for (var i = 0; i < testPages.length; i++) {
             var handler = new htmlparser.DefaultHandler(),
                 parser = new htmlparser.Parser(handler);
@@ -30,7 +34,7 @@ new Benchmark.Suite()
         }
     })
 
-    .add('htmlparser2 (https://github.com/fb55/htmlparser2)', function () {
+    .add('htmlparser2 v' + htmlparser2Version + ' (https://github.com/fb55/htmlparser2)', function () {
         for (var i = 0; i < testPages.length; i++) {
             var handler = new htmlparser2.DefaultHandler(),
                 parser = new htmlparser2.Parser(handler);
@@ -40,15 +44,14 @@ new Benchmark.Suite()
         }
     })
 
-    .add('parse5 (https://github.com/inikulin/parse5)', function () {
+    .add('parse5 v' + parse5Version + ' (https://github.com/inikulin/parse5)', function () {
         for (var i = 0; i < testPages.length; i++) {
-            var parser = new parse5.Parser();
-            parser.parse(testPages[i]);
+            parse5.parse(testPages[i]);
         }
     })
 
     .on('start', function () {
-        console.log('Starting benchmark. Fasten your seatbelts...')
+        console.log('Starting benchmark. Fasten your seatbelts...');
     })
 
     .on('cycle', function (event) {
@@ -56,7 +59,7 @@ new Benchmark.Suite()
     })
 
     .on('complete', function () {
-        console.log('Fastest is ' + this.filter('fastest').pluck('name'));
+        console.log('Fastest is ' + this.filter('fastest').map('name'));
     })
 
     .run();
