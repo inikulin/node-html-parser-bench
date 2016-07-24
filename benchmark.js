@@ -42,13 +42,12 @@ new Benchmark.Suite()
 
     .add('parse5 (https://github.com/inikulin/parse5)', function () {
         for (var i = 0; i < testPages.length; i++) {
-            var parser = new parse5.Parser();
-            parser.parse(testPages[i]);
+            parse5.parse(testPages[i]);
         }
     })
 
     .on('start', function () {
-        console.log('Starting benchmark. Fasten your seatbelts...')
+        console.log('Starting benchmark. Fasten your seatbelts...');
     })
 
     .on('cycle', function (event) {
@@ -56,7 +55,7 @@ new Benchmark.Suite()
     })
 
     .on('complete', function () {
-        console.log('Fastest is ' + this.filter('fastest').pluck('name'));
+        console.log('Fastest is ' + this.filter('fastest').map('name'));
     })
 
     .run();
